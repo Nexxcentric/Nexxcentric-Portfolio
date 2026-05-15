@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Our Work — Nexxcentric</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --near-black: #0e0e0e;
+  --off-white: #f5f3ef;
+  --warm-cream: #f0ebe0;
+  --forest: #0a3d2e;
+  --teal: #1a7a6e;
+  --lime: #c8f04d;
+  --syne: 'Syne', sans-serif;
+  --dm: 'DM Sans', sans-serif;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--dm);
+  background: var(--near-black);
+  color: var(--off-white);
+  overflow-x: hidden;
+}
+
+/* ── NAV ── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 18px 24px;
+  background: rgba(14,14,14,0.94);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.nav-logo {
+  font-family: var(--syne); font-weight: 800; font-size: 17px;
+  letter-spacing: 0.05em; color: var(--off-white); text-decoration: none;
+}
+.nav-logo span { color: var(--lime); }
+.nav-cta {
+  font-family: var(--dm); font-size: 13px; font-weight: 500;
+  color: var(--near-black); background: var(--lime);
+  padding: 9px 20px; border-radius: 100px; text-decoration: none;
+  transition: opacity 0.2s; white-space: nowrap;
+}
+.nav-cta:hover { opacity: 0.85; }
+
+/* ── HERO — dark: lime accents only ── */
+.hero {
+  min-height: 100svh;
+  display: flex; flex-direction: column; justify-content: flex-end;
+  padding: 100px 24px 60px;
+  background: var(--near-black);
+  position: relative; overflow: hidden;
+}
+.hero-eyebrow {
+  font-size: 11px; font-weight: 500;
+  letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--lime); margin-bottom: 20px;
+}
+.hero h1 {
+  font-family: var(--syne); font-weight: 800;
+  font-size: clamp(44px, 10vw, 110px);
+  line-height: 0.94; letter-spacing: -0.025em;
+}
+.hero h1 em { font-style: italic; font-weight: 400; color: rgba(200,240,77,0.65); }
+.hero-sub {
+  margin-top: 28px;
+  font-size: 15px; line-height: 1.65;
+  color: rgba(245,243,239,0.55);
+  max-width: 420px;
+}
+.hero-grid {
+  position: absolute; inset: 0; pointer-events: none;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+  background-size: 72px 72px;
+  mask-image: radial-gradient(ellipse 70% 50% at 90% 40%, black 20%, transparent 75%);
+}
+
+/* ── INTRO — light: teal accents ── */
+.intro-strip {
+  background: var(--off-white); color: var(--near-black);
+  padding: 56px 24px;
+  display: flex; flex-direction: column; gap: 40px;
+}
+.intro-text {
+  font-size: 16px; line-height: 1.75; font-weight: 300;
+}
+.intro-text strong { font-weight: 600; }
+.intro-stats { display: flex; gap: 40px; flex-wrap: wrap; }
+.stat-item { display: flex; flex-direction: column; gap: 4px; }
+.stat-num {
+  font-family: var(--syne); font-size: 34px; font-weight: 800;
+  color: var(--teal); line-height: 1;
+}
+.stat-label { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: #666; }
+
+/* ── SECTION LABEL ── */
+.section-label {
+  font-size: 11px; font-weight: 500;
+  letter-spacing: 0.16em; text-transform: uppercase;
+  display: flex; align-items: center; gap: 12px; margin-bottom: 40px;
+}
+.section-label::after {
+  content: ''; flex: 1; height: 1px; background: currentColor; opacity: 0.18;
+  max-width: 100px;
+}
+
+/* ── PROJECTS — dark: lime accents ── */
+.projects-section {
+  background: var(--near-black);
+  padding: 64px 24px;
+}
+.projects-section .section-label { color: var(--off-white); }
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3px;
+}
+@media (min-width: 600px) {
+  .projects-grid { grid-template-columns: 1fr 1fr; }
+  .project-card.featured { grid-column: span 2; min-height: 360px; }
+}
+@media (min-width: 1024px) {
+  .projects-grid { grid-template-columns: 1fr 1fr 1fr; }
+  .project-card.featured { grid-column: span 2; }
+}
+
+.project-card {
+  position: relative; overflow: hidden;
+  background: #161616;
+  aspect-ratio: 4/3;
+  display: block; text-decoration: none;
+}
+.project-card.featured { aspect-ratio: auto; min-height: 300px; }
+.project-card.soon {
+  display: flex; flex-direction: column;
+  justify-content: center; align-items: flex-start;
+  padding: 36px 28px;
+  aspect-ratio: auto; min-height: 200px;
+  border: 1px solid rgba(255,255,255,0.07);
+  background: #111;
+}
+
+.project-preview {
+  position: absolute; inset: 0; overflow: hidden;
+}
+.project-preview iframe {
+  width: 200%; height: 200%;
+  transform: scale(0.5); transform-origin: top left;
+  pointer-events: none; border: none;
+  transition: transform 0.7s ease;
+}
+.project-card:not(.soon):hover .project-preview iframe {
+  transform: scale(0.5) translateY(-28px);
+}
+.project-preview-overlay {
+  position: absolute; inset: 0;
+  background: rgba(8,8,8,0.2);
+  transition: background 0.3s;
+}
+.project-card:hover .project-preview-overlay {
+  background: rgba(8,8,8,0.05);
+}
+
+.project-card-inner {
+  position: absolute; inset: 0;
+  display: flex; flex-direction: column; justify-content: flex-end;
+  padding: 24px;
+  background: linear-gradient(to top, rgba(0,0,0,0.88) 0%, rgba(0,0,0,0.2) 55%, transparent 100%);
+  transition: background 0.35s;
+}
+.project-card:hover .project-card-inner {
+  background: linear-gradient(to top, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.45) 65%, rgba(0,0,0,0.05) 100%);
+}
+
+.project-tag {
+  font-size: 10px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--lime); margin-bottom: 6px;
+  opacity: 0; transform: translateY(6px);
+  transition: opacity 0.3s, transform 0.3s;
+}
+.project-card:hover .project-tag { opacity: 1; transform: translateY(0); }
+
+.project-name {
+  font-family: var(--syne); font-weight: 700;
+  font-size: clamp(18px, 2.5vw, 24px);
+  color: #fff; line-height: 1.1; margin-bottom: 6px;
+}
+.project-desc {
+  font-size: 12px; color: rgba(255,255,255,0.5); line-height: 1.55; max-width: 380px;
+  opacity: 0; transform: translateY(5px);
+  transition: opacity 0.3s 0.04s, transform 0.3s 0.04s;
+}
+.project-card:hover .project-desc { opacity: 1; transform: translateY(0); }
+
+.project-arrow {
+  position: absolute; top: 18px; right: 18px;
+  width: 34px; height: 34px; border-radius: 50%;
+  background: var(--lime); color: var(--near-black);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 14px; font-weight: 700;
+  opacity: 0; transform: scale(0.75);
+  transition: opacity 0.3s, transform 0.3s;
+}
+.project-card:hover .project-arrow { opacity: 1; transform: scale(1); }
+
+.soon-badge {
+  font-size: 10px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--lime); background: rgba(200,240,77,0.08);
+  border: 1px solid rgba(200,240,77,0.2);
+  padding: 5px 12px; border-radius: 100px; margin-bottom: 16px; display: inline-block;
+}
+.soon-name {
+  font-family: var(--syne); font-size: 22px; font-weight: 700;
+  color: rgba(255,255,255,0.25); margin-bottom: 8px;
+}
+.soon-note { font-size: 12px; color: rgba(255,255,255,0.2); line-height: 1.55; }
+
+/* ── INDUSTRIES — warm cream (light): teal accents ── */
+.industries-section {
+  background: var(--warm-cream); color: var(--near-black);
+  padding: 64px 24px;
+}
+.industries-section .section-label { color: var(--near-black); }
+.industries-section h2 {
+  font-family: var(--syne); font-weight: 800;
+  font-size: clamp(28px, 6vw, 52px);
+  line-height: 1.05; margin-bottom: 40px;
+}
+.industries-section h2 em { font-style: italic; font-weight: 400; color: var(--teal); }
+.industry-tags { display: flex; flex-wrap: wrap; gap: 10px; }
+.itag {
+  font-size: 13px; font-weight: 400;
+  padding: 10px 20px; border-radius: 100px;
+  border: 1.5px solid rgba(14,14,14,0.18);
+  color: var(--near-black); transition: all 0.2s; cursor: default;
+}
+.itag.highlight { background: var(--near-black); color: var(--off-white); border-color: var(--near-black); }
+.itag:not(.highlight):hover { background: var(--near-black); color: var(--off-white); border-color: var(--near-black); }
+
+/* ── CAPABILITIES — forest (dark): lime dots ── */
+.capabilities-section {
+  background: var(--forest); color: var(--off-white);
+  padding: 64px 24px;
+}
+.capabilities-section .section-label { color: var(--off-white); }
+.capabilities-section h2 {
+  font-family: var(--syne); font-weight: 800;
+  font-size: clamp(26px, 5vw, 48px); line-height: 1.08;
+  margin-bottom: 48px;
+}
+.cap-grid {
+  display: grid; grid-template-columns: 1fr;
+  gap: 1px; background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.07);
+}
+@media (min-width: 480px) { .cap-grid { grid-template-columns: 1fr 1fr; } }
+@media (min-width: 900px) { .cap-grid { grid-template-columns: repeat(3, 1fr); } }
+
+.cap-item {
+  background: var(--forest); padding: 28px 24px;
+  display: flex; flex-direction: column; gap: 10px;
+}
+.cap-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--lime); }
+.cap-title { font-family: var(--syne); font-weight: 700; font-size: 15px; }
+.cap-text { font-size: 13px; color: rgba(245,243,239,0.5); line-height: 1.6; }
+
+/* ── CTA — dark: lime accents ── */
+.cta-section {
+  background: var(--near-black); padding: 80px 24px;
+  text-align: center; position: relative; overflow: hidden;
+}
+.cta-section::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse 50% 50% at 50% 110%, rgba(200,240,77,0.05) 0%, transparent 70%);
+  pointer-events: none;
+}
+.cta-section h2 {
+  font-family: var(--syne); font-weight: 800;
+  font-size: clamp(36px, 8vw, 80px);
+  line-height: 0.96; letter-spacing: -0.02em;
+  margin-bottom: 24px; position: relative;
+}
+.cta-section h2 em { font-style: italic; font-weight: 400; color: rgba(200,240,77,0.75); }
+.cta-note {
+  font-size: 15px; color: rgba(245,243,239,0.45);
+  margin-bottom: 40px; line-height: 1.65;
+  max-width: 420px; margin-inline: auto;
+}
+.cta-buttons { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+.btn-primary {
+  font-size: 14px; font-weight: 500;
+  background: var(--lime); color: var(--near-black);
+  padding: 14px 30px; border-radius: 100px; text-decoration: none; transition: opacity 0.2s;
+}
+.btn-primary:hover { opacity: 0.85; }
+.btn-secondary {
+  font-size: 14px; font-weight: 400;
+  color: var(--off-white); padding: 14px 30px;
+  border-radius: 100px; text-decoration: none;
+  border: 1px solid rgba(255,255,255,0.2); transition: border-color 0.2s;
+}
+.btn-secondary:hover { border-color: rgba(255,255,255,0.5); }
+
+/* ── FOOTER ── */
+footer {
+  background: #090909; padding: 28px 24px;
+  display: flex; flex-direction: column; gap: 8px;
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+@media (min-width: 600px) {
+  footer { flex-direction: row; justify-content: space-between; align-items: center; }
+}
+.footer-logo {
+  font-family: var(--syne); font-weight: 800; font-size: 15px;
+  color: var(--off-white); letter-spacing: 0.05em;
+}
+.footer-logo span { color: var(--lime); }
+footer p { font-size: 12px; color: rgba(255,255,255,0.28); }
+
+/* ── ANIMATIONS ── */
+.fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.65s, transform 0.65s; }
+.fade-in.visible { opacity: 1; transform: translateY(0); }
+
+/* ── DESKTOP UPGRADES ── */
+@media (min-width: 768px) {
+  nav { padding: 20px 40px; }
+  .hero { padding: 120px 40px 80px; }
+  .intro-strip { flex-direction: row; align-items: flex-start; gap: 80px; padding: 64px 40px; }
+  .intro-text { flex: 1; }
+  .projects-section,
+  .industries-section,
+  .capabilities-section,
+  .cta-section { padding: 80px 40px; }
+  footer { padding: 32px 40px; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="https://nexxcentric.com" class="nav-logo">NEXX<span>.</span></a>
+  <a href="mailto:hello@nexxcentric.com" class="nav-cta">Get in touch</a>
+</nav>
+
+<!-- HERO (dark) -->
+<section class="hero">
+  <div class="hero-grid"></div>
+  <p class="hero-eyebrow fade-in">Selected Work — Nexxcentric</p>
+  <h1 class="fade-in" style="transition-delay:.08s">
+    Websites that<br><em>work as hard</em><br>as you do.
+  </h1>
+  <p class="hero-sub fade-in" style="transition-delay:.16s">
+    We build brands and digital experiences for founders, small businesses, and growing companies — from Jamaica and beyond.
+  </p>
+</section>
+
+<!-- INTRO (light) -->
+<section class="intro-strip">
+  <p class="intro-text fade-in">
+    At <strong>Nexxcentric</strong>, we don't do template drops. Every site we build is designed to reflect who you are, convert the people you're trying to reach, and hold up long after launch day. Below is a selection of our work across industries and project types.
+  </p>
+  <div class="intro-stats fade-in" style="transition-delay:.1s">
+    <div class="stat-item">
+      <span class="stat-num">10+</span>
+      <span class="stat-label">Projects Built</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num">4+</span>
+      <span class="stat-label">Industries</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num">JA</span>
+      <span class="stat-label">& Beyond</span>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS (dark) -->
+<section class="projects-section">
+  <p class="section-label fade-in">Our Work</p>
+  <div class="projects-grid">
+
+    <a href="https://nexxcentric.github.io/nexxcentricgroup/" target="_blank" class="project-card featured fade-in">
+      <div class="project-preview">
+        <iframe src="https://nexxcentric.github.io/nexxcentricgroup/" loading="lazy" title="Nexxcentric Group"></iframe>
+        <div class="project-preview-overlay"></div>
+      </div>
+      <div class="project-card-inner">
+        <p class="project-tag">Holding Company · Corporate</p>
+        <h3 class="project-name">Nexxcentric Group</h3>
+        <p class="project-desc">Corporate identity and portfolio site for a Jamaican holding company spanning strategy, retail, fashion, and beauty.</p>
+      </div>
+      <div class="project-arrow">↗</div>
+    </a>
+
+    <a href="https://nexxcentric.github.io/herbanaglow/" target="_blank" class="project-card fade-in" style="transition-delay:.05s">
+      <div class="project-preview">
+        <iframe src="https://nexxcentric.github.io/herbanaglow/" loading="lazy" title="Herbana Glow"></iframe>
+        <div class="project-preview-overlay"></div>
+      </div>
+      <div class="project-card-inner">
+        <p class="project-tag">Beauty & Wellness · e-Commerce</p>
+        <h3 class="project-name">Herbana Glow</h3>
+        <p class="project-desc">Brand identity and website for a Jamaican natural self-care brand rooted in island botanicals.</p>
+      </div>
+      <div class="project-arrow">↗</div>
+    </a>
+
+    <a href="https://nexxcentric.github.io/koolabox/" target="_blank" class="project-card fade-in" style="transition-delay:.1s">
+      <div class="project-preview">
+        <iframe src="https://nexxcentric.github.io/koolabox/" loading="lazy" title="Koola Box"></iframe>
+        <div class="project-preview-overlay"></div>
+      </div>
+      <div class="project-card-inner">
+        <p class="project-tag">Food & Beverage · Local Business</p>
+        <h3 class="project-name">Koola Box</h3>
+        <p class="project-desc">Sales-focused site for a St. Mary ice supply and delivery service — WhatsApp ordering and island-wide delivery.</p>
+      </div>
+      <div class="project-arrow">↗</div>
+    </a>
+
+    <a href="https://nexxcentric.github.io/coilab/" target="_blank" class="project-card fade-in" style="transition-delay:.15s">
+      <div class="project-preview">
+        <iframe src="https://nexxcentric.github.io/coilab/" loading="lazy" title="Coilab Beauty"></iframe>
+        <div class="project-preview-overlay"></div>
+      </div>
+      <div class="project-card-inner">
+        <p class="project-tag">Beauty · Hair Salon</p>
+        <h3 class="project-name">Coilab Beauty</h3>
+        <p class="project-desc">Brand and site for a curl-focused hair salon — services, product shop, extensions, and booking integration.</p>
+      </div>
+      <div class="project-arrow">↗</div>
+    </a>
+
+    <a href="https://nexxcentric.github.io/PhillipsHoldings/" target="_blank" class="project-card fade-in" style="transition-delay:.2s">
+      <div class="project-preview">
+        <iframe src="https://nexxcentric.github.io/PhillipsHoldings/" loading="lazy" title="Phillips Holdings LLC"></iframe>
+        <div class="project-preview-overlay"></div>
+      </div>
+      <div class="project-card-inner">
+        <p class="project-tag">Real Estate · USA</p>
+        <h3 class="project-name">Phillips Holdings</h3>
+        <p class="project-desc">Professional real estate agent site with listings, services, and lead capture — Georgia, USA.</p>
+      </div>
+      <div class="project-arrow">↗</div>
+    </a>
+
+    <a href="https://nexxcentric.github.io/bgshomeimprovements/" target="_blank" class="project-card fade-in" style="transition-delay:.25s">
+      <div class="project-preview">
+        <iframe src="https://nexxcentric.github.io/bgshomeimprovements/" loading="lazy" title="BGS Home Improvements"></iframe>
+        <div class="project-preview-overlay"></div>
+      </div>
+      <div class="project-card-inner">
+        <p class="project-tag">Construction · North Carolina</p>
+        <h3 class="project-name">BGS Home Improvements</h3>
+        <p class="project-desc">Credibility-first site for a 40-year veteran builder — services, testimonials, and quote capture.</p>
+      </div>
+      <div class="project-arrow">↗</div>
+    </a>
+
+    <a href="https://shopinsightfulimprint.com/" target="_blank" class="project-card fade-in" style="transition-delay:.3s">
+      <div class="project-preview">
+        <iframe src="https://shopinsightfulimprint.com/" loading="lazy" title="Insightful Imprint"></iframe>
+        <div class="project-preview-overlay"></div>
+      </div>
+      <div class="project-card-inner">
+        <p class="project-tag">Print on Demand · Shopify</p>
+        <h3 class="project-name">Insightful Imprint</h3>
+        <p class="project-desc">Shopify storefront for a print-on-demand and digital downloads brand — products and digital delivery.</p>
+      </div>
+      <div class="project-arrow">↗</div>
+    </a>
+
+    <a href="https://nexxcentric.com" target="_blank" class="project-card fade-in" style="transition-delay:.35s">
+      <div class="project-preview">
+        <iframe src="https://nexxcentric.com" loading="lazy" title="Nexxcentric Agency"></iframe>
+        <div class="project-preview-overlay"></div>
+      </div>
+      <div class="project-card-inner">
+        <p class="project-tag">Agency · WordPress</p>
+        <h3 class="project-name">Nexxcentric</h3>
+        <p class="project-desc">Our own agency site — services, packages, case studies, and lead capture.</p>
+      </div>
+      <div class="project-arrow">↗</div>
+    </a>
+
+    <div class="project-card soon fade-in" style="transition-delay:.4s">
+      <span class="soon-badge">Back online soon</span>
+      <p class="soon-name">Depvia</p>
+      <p class="soon-note">Caribbean lifestyle & beauty marketplace. Currently being updated — launching shortly.</p>
+    </div>
+
+    <div class="project-card soon fade-in" style="transition-delay:.45s">
+      <span class="soon-badge">Back online soon</span>
+      <p class="soon-name">Anara Beauty</p>
+      <p class="soon-note">Beauty brand site currently in refresh. Live within two weeks.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- INDUSTRIES (warm cream — light) -->
+<section class="industries-section">
+  <p class="section-label fade-in">Experience Across</p>
+  <h2 class="fade-in">We've built for a<br><em>range of industries.</em></h2>
+  <div class="industry-tags fade-in" style="transition-delay:.1s">
+    <span class="itag highlight">Beauty & Wellness</span>
+    <span class="itag">Food & Beverage</span>
+    <span class="itag">Real Estate</span>
+    <span class="itag">Construction & Home</span>
+    <span class="itag">Fashion & Apparel</span>
+    <span class="itag">Retail & e-Commerce</span>
+    <span class="itag">Lifestyle & Marketplace</span>
+    <span class="itag">Holding Companies</span>
+    <span class="itag">Service Businesses</span>
+    <span class="itag">Nonprofits</span>
+  </div>
+</section>
+
+<!-- CAPABILITIES (forest — dark) -->
+<section class="capabilities-section">
+  <p class="section-label fade-in">What We Build</p>
+  <h2 class="fade-in">More than a website.<br>A digital presence<br>that earns its keep.</h2>
+  <div class="cap-grid fade-in" style="transition-delay:.1s">
+    <div class="cap-item">
+      <div class="cap-dot"></div>
+      <p class="cap-title">Brand Identity</p>
+      <p class="cap-text">Logo, color system, typography, voice — the full brand foundation before a single page is built.</p>
+    </div>
+    <div class="cap-item">
+      <div class="cap-dot"></div>
+      <p class="cap-title">Website Design & Build</p>
+      <p class="cap-text">Custom websites on WordPress, Shopify, or static HTML — built for your audience, not a template catalog.</p>
+    </div>
+    <div class="cap-item">
+      <div class="cap-dot"></div>
+      <p class="cap-title">e-Commerce</p>
+      <p class="cap-text">Shopify stores, product pages, digital delivery, and checkout flows built to convert.</p>
+    </div>
+    <div class="cap-item">
+      <div class="cap-dot"></div>
+      <p class="cap-title">Social & Content</p>
+      <p class="cap-text">Strategy, content calendars, and branded assets that stay consistent with your site.</p>
+    </div>
+    <div class="cap-item">
+      <div class="cap-dot"></div>
+      <p class="cap-title">Ongoing Strategy</p>
+      <p class="cap-text">Post-launch support, positioning, and growth planning — for clients who want more than a one-time build.</p>
+    </div>
+    <div class="cap-item">
+      <div class="cap-dot"></div>
+      <p class="cap-title">AI-Augmented Systems</p>
+      <p class="cap-text">Workflow automation and AI tools integrated into your ops — so your business runs leaner without losing the human touch.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CTA (dark) -->
+<section class="cta-section">
+  <h2 class="fade-in">Ready to<br><em>build yours?</em></h2>
+  <p class="cta-note fade-in" style="transition-delay:.1s">
+    Let's talk about what you need, what you've tried, and what actually makes sense for where you are right now.
+  </p>
+  <div class="cta-buttons fade-in" style="transition-delay:.2s">
+    <a href="mailto:hello@nexxcentric.com" class="btn-primary">Start the conversation</a>
+    <a href="https://nexxcentric.com" target="_blank" class="btn-secondary">See full site</a>
+  </div>
+</section>
+
+<footer>
+  <span class="footer-logo">NEXXCENTRIC<span>.</span></span>
+  <p>Strategic branding & digital agency — Jamaica & beyond</p>
+  <p>hello@nexxcentric.com</p>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
